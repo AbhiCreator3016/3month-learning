@@ -1,0 +1,7 @@
+Count all Digits of a Number
+Reverse a number
+Palindrome Number
+GCD of Two Numbers
+Check if the Number is Armstrong
+Print all Divisors
+Check for Prime Number
