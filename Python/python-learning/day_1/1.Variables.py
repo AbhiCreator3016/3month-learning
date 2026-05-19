@@ -9,6 +9,8 @@ print(name)                 # Output: Rahul
 print("Age:", age)          # Output: Age: 22
 print("Height:", height)    # Output: Height: 5.9
 
+print(f"{name}'s age is {age}. His height is {5.9} ft.")
+
 # Rules for naming variables in Python
 
 # 1. Variable name must start with a letter or underscore (_)
