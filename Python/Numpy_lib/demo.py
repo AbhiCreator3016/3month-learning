@@ -4,16 +4,17 @@ rng = np.random.default_rng(seed=42)
 
 
 # print("=================== 1.Array Creation ========================== ")
-# 1D Array (Vector)
+# # 1D Array (Vector)
 # print("====== 1D Array (vector)======")
 # my_list = [1, 2, 3, 4, 5]
 # arr_1d = np.array(my_list)
 # print(arr_1d)
 # print("\n")
 
-#2D Array (Matrix / Grid)
+# 2D Array (Matrix / Grid)
 # print("====== 2D Array (Matrix / Grid)======")
-# my_matrix = [[1, 2, 3], [4, 5, 6]]
+# my_matrix = [[1, 2, 3], 
+#              [4, 5, 6]]
 # arr_2d = np.array(my_matrix)
 # print(arr_2d)
 # print("\n")
@@ -106,8 +107,8 @@ rng = np.random.default_rng(seed=42)
 # print(a,b)
 # c = np.vstack([a,b])
 # d = np.hstack([a,b])
-# print(c)
-# print(d)
+# print(f"Vertical Stack : \n{c}")
+# print(f"Horizontal Stack : {d}")
 
 # print("Slice rows and columns from a 2D array")
 # m = np.arange(1,17).reshape(4,4)
@@ -149,12 +150,11 @@ rng = np.random.default_rng(seed=42)
 # data = np.array([10,20,30,40,50])
 # dataMax = np.max(data)
 # dataMin = np.min(data)
-# Normalised = data-dataMin/dataMax-dataMin
 # normalised = (data - data.min()) / (data.max() - data.min())
-# print(Normalised)
-# print(normalised).
+# print(normalised)
 
-# print("Find unique values and their count: ")
+print("Find unique values and their count: ")
+
 # arr = np.array([3,1,4,1,5,9,2,6,5,3,5])
 # print(arr)
 # vals, counts = np.unique(arr, return_counts=True)
@@ -167,16 +167,18 @@ rng = np.random.default_rng(seed=42)
 # C = np.dot(A,B)
 # print(C)
 
-print("Solve a system of linear equations")
+#===============================================================
+
+# print("Solve a system of linear equations")
 
 # 2x + y  = 8
 # x  + 3y = 19
 
-A = np.array([[2,1],[1,3]])
-b = np.array([8,19])
+# A = np.array([[2,1],[1,3]])
+# b = np.array([8,19])
 
-xy = np.linalg.solve(A,b)
-print("2x + y  = 8")
-print("x  + 3y = 19")
-print(f"[x, y]:{xy}")
-print(f"[c1,c2]{np.dot(A,xy)}")
+# xy = np.linalg.solve(A,b)
+# print("2x + y  = 8")
+# print("x  + 3y = 19")
+# print(f"[x, y]:{xy}")
+# print(f"[c1,c2]{np.dot(A,xy)}")
