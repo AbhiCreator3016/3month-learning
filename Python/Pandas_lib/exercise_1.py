@@ -14,17 +14,18 @@ candidates = pd.DataFrame({
 })
 
 df = pd.DataFrame(candidates)
+print("="*60)
+print(f"Orignal Data : \n{df}")
+print("="*60)
 
 
 # TODO 1: Print the shape of the dataframe
-
-# print(f"Shape:{df.shape}")
+print(f"Shape:{df.shape}")
 
 
 
 # TODO 2: Count missing values in each column
-
-# print(df.isnull().sum())
+print(df.isnull().sum())
 
 
 
@@ -35,20 +36,22 @@ df[cols_to_fix] = df[cols_to_fix].fillna(df[cols_to_fix].mean())
 # df = df.fillna(df.mean(numeric_only=True))        # fix all numerical cols
 # df["ml"] = df["ml"].fillna(df["ml"].mean())       # manual one col fix
 
-print(df)
+# print(df)
 
 # TODO 4: Create a new column "total_score" = average of python + ml + sql
-
-# df["total_score"] = df[["python","ml","sql"]].mean(axis=1)
+df["total_score"] = df[["python","ml","sql"]].mean(axis=1)
 # print(df)
 
 # TODO 5: Print the top 3 candidates sorted by total_score (descending)
-
-# sorted_cand = df.sort_values(by="total_score", ascending=False)
+# sorted_cand = df.sort_values(by="total_score", ascending=False).head(3) # .head(3) print top 3
 # print(sorted_cand)
 
 
 # TODO 6: Print average total_score per domain using groupby
-
 # grouped_data = df.groupby("domain")["total_score"].agg(["mean"])
 # print(grouped_data)
+
+
+print("="*60)
+print(f"Processed Data : \n{df}")
+print("="*60)
