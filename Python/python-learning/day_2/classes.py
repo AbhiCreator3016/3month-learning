@@ -16,7 +16,7 @@ class NeuralNetwork:
         np.random.seed(42)
 
         # Weight matrix
-        self.w1 = np.random.randn(rows, cols)
+        self.w1 = np.random.randn(rows, cols) * np.sqrt(2/rows)
 
         # Bias matrix
         self.b1 = np.zeros((1, cols))
@@ -42,7 +42,7 @@ class NeuralNetwork:
 # ======================================
 
 # Create object
-nn = NeuralNetwork(3, 4)
+nn = NeuralNetwork(4, 4)
 
 # Print matrices
 nn.printMatrix()
