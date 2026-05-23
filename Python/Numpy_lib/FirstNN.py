@@ -1,4 +1,40 @@
+#%%
 import numpy as np
+
+# Each row = one student
+# Column 1 = CGPA (normalized: divide by 10)
+# Column 2 = Coding problems solved (normalized: divide by 100)
+
+#              CGPA   Problems   →   Placed?
+# Student 1:   6.0    20             No  (low cgpa, few problems)
+# Student 2:   8.5    80             Yes (good cgpa, many problems)
+# Student 3:   9.0    15             No  (great cgpa but no coding practice)
+# Student 4:   7.0    90             Yes (decent cgpa, lots of practice)
+# Student 5:   5.5    10             No  (weak on both)
+# Student 6:   8.0    70             Yes (strong on both)
+# Student 7:   7.5    60             Yes (balanced)
+# Student 8:   6.5    25             No  (below average both)
+
+# Normalize inputs to range 0–1 (neural networks learn better this way)
+X = np.array([
+    [6.0/10, 20/100],   # Student 1
+    [8.5/10, 80/100],   # Student 2
+    [9.0/10, 15/100],   # Student 3
+    [7.0/10, 90/100],   # Student 4
+    [5.5/10, 10/100],   # Student 5
+    [8.0/10, 70/100],   # Student 6
+    [7.5/10, 60/100],   # Student 7
+    [6.5/10, 25/100],   # Student 8
+])
+
+y = np.array([[0],[1],[0],[1],[0],[1],[1],[0]])  # 0=Not placed, 1=Placed
+
+print("Input shape:", X.shape)   # (8, 2) — 8 students, 2 features
+print("Label shape:", y.shape)   # (8, 1) — 8 labels
+print("\nFirst student — CGPA:6.0, Problems:20 → Placed:", y[0][0])
+print("Second student — CGPA:8.5, Problems:80 → Placed:", y[1][0])
+
+#%%
 
 # ===  ACTIVATION FUNCTION  =============================================
 # --> Add non-Linearity to the model
@@ -20,9 +56,9 @@ def relu_derivative(x):
     return (x > 0).astype(float)
     
 #--> Testing the functions 
-x = np.array([-2,-1,0,1,2])
-print("Sigmoid: ", sigmoid(x))
-print("ReLu: ", relu(x))
+# x = np.array([-2,-1,0,1,2])
+# print("Sigmoid: ", sigmoid(x))
+# print("ReLu: ", relu(x))
 
 
 #===  LOSS FUNCTION  ===================================================
@@ -38,18 +74,26 @@ def mse_derivative(y_actual, y_pred):
 
 
 #=== THE NEURAL NETWORK ================================================
-class NeuralNetwork:
-    def __init__(self, input_size, hidden_size, output_size):
-        """
-        Architecture: input → hidden layer (ReLU) → output layer (Sigmoid)
-        
-        Xavier initialization: weights scaled by sqrt(2/n_inputs)
-        This prevents vanishing/exploding gradients at initialization."""
+class PlacementPredictor:
+            
+    #---  Architecture:
+    #       Input layer  : 2 neurons (CGPA, Problems solved)
+    #       Hidden layer : 4 neurons (learns patterns like "needs both skills")
+    #       Output layer : 1 neuron  (probability of placement: 0.0 to 1.0)
+            
         
 
+    def __init__(self, input_size, hidden_size, output_size):
         np.random.seed(42)
 
         #Layer 1: input -> hidden 
+        # Layer 1 weights: shape (2, 4)
+        # 2 inputs connecting to 4 hidden neurons
+        # Think of each hidden neuron as learning one pattern:
+        #   Neuron 1 → "Is CGPA high?"
+        #   Neuron 2 → "Are problems solved high?"
+        #   Neuron 3 → "Is student balanced?"
+        #   Neuron 4 → "Is student weak overall?"
         self.w1 = np.random.randn(input_size, hidden_size) * np.sqrt(2/input_size)
         self.b1 = np.zeros((1,hidden_size))
 
