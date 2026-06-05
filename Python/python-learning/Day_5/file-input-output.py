@@ -7,23 +7,34 @@
 # ── WRITING A FILE ────────────────────────────────────────────
 # Always use 'with' — it closes the file automatically
 # even if an error occurs halfway through
-
-with open("results.txt","w") as f:
-    f.write("Experiment: ResNet51\n")
-    f.write("Accuracy  : 0.94\n")
-    f.write("F1 Score  : 0.91\n")
-print("File written.")
+with open("result.txt",'w') as file:
+    file.write("List of Items:\n")
+    file.write("1. Toothpaste\n")
+    file.write("2. Shower Gel\n")
+    file.write("3. Shampoo\n")
+print("result.txt file created and data added.\n")
 
 # ── READING A FILE ────────────────────────────────────────────
 
-with open("results.txt","r") as f:
-    content = f.read()
-print(f"File: results.txt:\n{content}")
+with open("result.txt","r") as file:
+    content = file.read()
+    print(content)
 
 # Read line by line - for large files....
 
-with open("results.txt","r") as f:
-    for line in f:
-        print(">",line.strip())
+with open("result.txt","r") as file:
+    for line in file:
+        print(line.strip())
 
-# ── READING A FILE ────────────────────────────────────────────
+
+
+# ── APPENDING - add without overwriting ────────────────────────────────────────────
+
+with open("result.txt","a") as file:
+    file.write("4. Tooth brush.\n")
+
+# ── Reading all the lines into a list ────────────────────────────────────
+
+with open("result.txt","r") as file:
+    lines = file.readlines()
+print(lines)
