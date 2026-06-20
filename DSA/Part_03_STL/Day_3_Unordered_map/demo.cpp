@@ -26,7 +26,7 @@ int main(){
 
    // ================= INSERTION =================
     cout << "\n========= 1. INSERTION =========\n";
-    cout<<"\n------> Inserting users with (.[key] = value)\n";
+    cout<<"\n------> Inserting users with ([key] = value)\n";
     users["User_1"] = "Abhi22385";
     cout<<"\nUser_1 added to the users DB.\n";
     users["User_2"] = "Bhav22390";
