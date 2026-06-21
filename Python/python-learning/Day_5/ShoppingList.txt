@@ -1,0 +1,6 @@
+List of shopping items:
+1. Toothpaste
+2. Shampoo.
+3. Shower gel.
+4. Moisturizer.
+5. Face wash.
